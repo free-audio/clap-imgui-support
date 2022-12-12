@@ -230,7 +230,13 @@ public:
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
         
+        ImGuiViewport* viewport = ImGui::GetMainViewport();
+        ImGui::SetNextWindowPos(viewport->WorkPos);
+        ImGui::SetNextWindowSize(viewport->WorkSize);
+        
         _editor->onRender();
+        
+        ImGui::End();
 
         // Rendering
         ImGui::Render();

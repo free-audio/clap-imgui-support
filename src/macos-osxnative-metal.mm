@@ -355,7 +355,13 @@ void timerCallback(CFRunLoopTimerRef timer, void *info)
     
     ImGui::NewFrame();
     
+    ImGuiViewport* viewport = ImGui::GetMainViewport();
+    ImGui::SetNextWindowPos(viewport->WorkPos);
+    ImGui::SetNextWindowSize(viewport->WorkSize);
+    
     self.editor->onRender();
+    
+    ImGui::End();
 
     ImGui::Render();
     ImDrawData* draw_data = ImGui::GetDrawData();
