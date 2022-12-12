@@ -16,22 +16,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${IMGUI_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC clap-core)
 
 if (APPLE)
-    set(APPLE_GLFW FALSE)
-    if (${APPLE_GLFW})
-		add_dependencies(${PROJECT_NAME} glfw)
-        target_sources(${PROJECT_NAME} PUBLIC
-            src/macos-glfw-metal.mm
-            ${IMGUI_SOURCE_DIR}/backends/imgui_impl_metal.mm
-            ${IMGUI_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
-            )
-        target_link_libraries(${PROJECT_NAME} PUBLIC glfw "-framework CoreFoundation" "-framework GameController" "-framework Cocoa" "-framework Metal" "-framework MetalKit" "-framework QuartzCore")
-    else()
-        target_sources(${PROJECT_NAME} PUBLIC
-                src/macos-osxnative-metal.mm
-                ${IMGUI_SOURCE_DIR}/backends/imgui_impl_metal.mm
-                )
+    target_sources(${PROJECT_NAME} PUBLIC
+           src/macos-osxnative-metal.mm
+           ${IMGUI_SOURCE_DIR}/backends/imgui_impl_metal.mm
+           )
         target_link_libraries(${PROJECT_NAME} PUBLIC "-framework CoreFoundation" "-framework GameController" "-framework Cocoa" "-framework Metal" "-framework MetalKit")
-    endif()
 endif()
 
 if(WIN32)
