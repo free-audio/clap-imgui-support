@@ -1,4 +1,4 @@
-building CLAP plugins with IMGUI as UI framework
+Building CLAP plugins with IMGUI as UI framework
 
 Supported platforms:
 - MacOS with Metal
