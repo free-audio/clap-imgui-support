@@ -16,7 +16,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${IMGUI_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC clap-core)
 
 if (APPLE)
-    target_sources(${PROJECT_NAME} PUBLIC
+    target_sources(${PROJECT_NAME} PRIVATE
            src/macos-osxnative-metal.mm
            ${IMGUI_SOURCE_DIR}/backends/imgui_impl_metal.mm
            )
@@ -24,7 +24,7 @@ if (APPLE)
 endif()
 
 if(WIN32)
-   target_sources(${PROJECT_NAME} PUBLIC
+   target_sources(${PROJECT_NAME} PRIVATE
             src/win-dx12.cpp
             ${IMGUI_SOURCE_DIR}/backends/imgui_impl_win32.cpp
             ${IMGUI_SOURCE_DIR}/backends/imgui_impl_dx12.cpp
